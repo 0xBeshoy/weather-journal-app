@@ -1,7 +1,7 @@
 // Setup empty JS object to act as endpoint for all routes
 projectData = {};
 
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 
 // Require Express to run server and routes
 const dotenv = require('dotenv').config();
@@ -24,8 +24,28 @@ app.use(cors())
 app.use(express.static('website'));
 
 
-// Setup Server
 
+// Get weather data route
+app.get('/edit', getWiz);
+
+// /wiz route callback 
+function getWiz(request, response){
+    response.send(JSON.stringify(projectData));
+}
+
+
+// Edit weather data route
+app.post('/edit', editWiz);
+
+// /edit route callback
+function editWiz(request, response){
+    projectData.temp = request.body.temp;
+    projectData.date = request.body.date;
+    projectData.feel = request.body.feel;
+    response.send(projectData);
+}
+
+// Setup Server
 app.listen(
     PORT, () => {
         `Server is running on PORT N#: ${PORT}`;
