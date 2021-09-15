@@ -4,6 +4,7 @@ projectData = {};
 const PORT = process.env.PORT || 5000;
 
 // Require Express to run server and routes
+const dotenv = require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser')
 var cors = require('cors')
