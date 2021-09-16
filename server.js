@@ -1,13 +1,14 @@
 // Setup empty JS object to act as endpoint for all routes
 projectData = {};
 
-const PORT = 5000;
+const PORT = 8080;
 
 // Require Express to run server and routes
 const dotenv = require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser')
-var cors = require('cors')
+var cors = require('cors');
+// const config = require('dotenv');
 // Start up an instance of app
 const app = express();
 
@@ -48,6 +49,6 @@ function editWiz(request, response){
 // Setup Server
 app.listen(
     PORT, () => {
-        `Server is running on PORT N#: ${PORT}`;
+        console.log(`Server is running on PORT N#: ${PORT} at http://localhost:${PORT}` );
     }
 )
